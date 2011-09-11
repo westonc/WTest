@@ -1,0 +1,35 @@
+WTest: PHPUnit without any of the features!
+
+Seriously, writing some initial testing code for my own projects, I took a look at PHPUnit, and just decided it was overkill for most of what I wanted to do: assert specific conditions, and organize groups of these into sets of test cases. So I wrote something small that did just that.
+
+USAGE:
+
+First, create YourTestSet.test.php:
+
+	class YourTestSet extends WTestSet {
+
+		function test_oneThing() {
+			return $this->assert(
+				1+1 == 2,
+				'Whoa! Highly unexpected artithmetic result!'
+			);
+		}
+
+		function test_another() {
+			return $this->assert(
+				0.1 + 0.2 == 0.3,
+				'Mind the floating point gap!'
+			);
+		}
+	}
+
+Then, while in the directory containing it, run `wtest`. 
+
+For each file named *.test.php, WTest will instantiate an instance, and execute all methods that begin with `test_`. Methods that return `true` will be considered successful, methods that return false will be considered unsuccessful. Assertion failures and other error messages will be displayed for each test along with its success or failure, and pass/fail counts will be tallied and displayed.
+
+
+
+
+
+
+
