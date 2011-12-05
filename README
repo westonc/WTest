@@ -21,6 +21,13 @@ First, create YourTestSet.test.php:
 				'Mind the floating point gap!'
 			);
 		}
+
+		function test_a_third_thing() {
+			return $this->assertSame(
+				'sum', 2+2,
+				'total', 4
+			);
+		}
 	}
 
 Then, while in the directory containing it, run `wtest`. 

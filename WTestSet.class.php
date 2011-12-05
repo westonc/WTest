@@ -56,6 +56,18 @@ class WTestSet {
 			return $this;
 	}
 
+	function assertSame($namea,$a,$nameb,$b) {
+		if($a != $b) {
+			$this->log(
+				"\n\t$namea: ",var_export($a,true),
+				"\n\tis not",
+				"\n\t$nameb: ",var_export($b,true)
+			);
+			return false;
+		} else
+			return $this;
+	}
+
 	function log() {
 		$args = func_get_args();
 		$this->log[] = implode(null,$args);
